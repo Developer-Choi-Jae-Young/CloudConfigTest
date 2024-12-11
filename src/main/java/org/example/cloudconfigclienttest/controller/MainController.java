@@ -1,0 +1,20 @@
+package org.example.cloudconfigclienttest.controller;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+public class MainController {
+    private final Environment env;
+
+    @GetMapping("/status")
+    public String getStatus() {
+        log.info("{}", env.getProperty("test.name"));
+        return "Get Status!";
+    }
+}
